@@ -9,24 +9,50 @@ module.exports = {
     clean: true, // Очистка папки dist перед сборкой
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'], // Расширения, которые Webpack будет обрабатывать
+    extensions: ['.tsx', '.ts', '.js', '.png'], // Расширения, которые Webpack будет обрабатывать
   },
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/, // Обработка TypeScript файлов
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: 'ts-loader', // TypeScript компилятор
+        use: ['babel-loader']
       },
       {
-        test: /\.css$/, // Обработка CSS файлов
-        use: ['style-loader', 'css-loader'], // Добавление стилей
+        test: /\.(ts)x?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'ts-loader'
+        }
       },
       {
-        test: /\.(png|jpg|jpeg|svg)$/, // Обработка изображений
-        type: 'asset/resource', // Копирование файлов в папку сборки
+        test: /\.css$/,
+        exclude: /\.module\.css$/,
+        use: ['style-loader', 'css-loader']
       },
-    ],
+      {
+        test: /\.module\.css$/i,
+        exclude: /node_modules/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              esModule: false,
+              modules: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(jpg|jpeg|png|svg)$/,
+        type: 'asset/resource'
+      },
+      {
+        test: /\.(woff|woff2)$/,
+        type: 'asset/resource'
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -36,6 +62,7 @@ module.exports = {
   devServer: {
     static: path.resolve(__dirname, './dist'), // Папка, из которой сервер отдаёт файлы
     historyApiFallback: true, // Поддержка React Router
+    hot: true,
     port: 4000, // Порт для разработки
     open: true, // Автоматическое открытие в браузере
   },
