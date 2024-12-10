@@ -4,5 +4,6 @@ export type TCard = {
     image: string,
     describe: string,
     like: boolean,
-    id: number
+    id: string,
+    price: number
 }

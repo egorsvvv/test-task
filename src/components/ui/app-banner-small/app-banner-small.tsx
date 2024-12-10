@@ -11,7 +11,7 @@ import MacBookMob from "../../../images/MacBookMob.png"
 
 export const AppBannerSmallUi: FC = () => {
   return (
-    <div className={styles.smallBannerContainer}>
+    <section className={styles.smallBannerContainer}>
       <div className={styles.psContainer}>
         <div className={styles.psImageContainer}>
             <picture>
@@ -85,6 +85,6 @@ export const AppBannerSmallUi: FC = () => {
           <button className={styles.button}>Shop Now</button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

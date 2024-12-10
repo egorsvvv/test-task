@@ -4,7 +4,7 @@ import Iphone from "../../../images/Iphone.png"
 
 export const AppBannerUi: FC = () => {
     return (
-        <div className={styles.bannerContainer}>
+        <section className={styles.bannerContainer}>
             <div className={styles.titleContainer}>
                 <p className={styles.paragraph}>Pro.Beyond.</p>
                 <h1 className={styles.title}>
@@ -17,6 +17,6 @@ export const AppBannerUi: FC = () => {
             <div className={styles.imageContainer}>
                 <img src={Iphone}></img>
             </div>
-        </div>
+        </section>
     )
 }

@@ -69,3 +69,10 @@
         text-align: center;
     }
 }
+
+@media (max-width: 430px) {
+    .imageContainer img {
+        width: 80%;
+        height: auto;
+    }
+}
