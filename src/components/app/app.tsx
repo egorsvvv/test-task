@@ -18,7 +18,7 @@ export const App = () => {
     }, [dispatch])
 
     return (
-    <BrowserRouter>
+    <BrowserRouter basename="/test-task">
         <div>
             <AppHeader />
             <Routes>
